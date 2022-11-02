@@ -1,0 +1,32 @@
+{% extends 'base_email.html' %}
+
+{% block title %} Agregar {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+
+        <form action="{{ url_for('email.add_contactos') }}" method="post">
+ 
+            {{ form.hidden_tag() }}
+            {{ form.n.label(class='form-label') }}
+            {{ form.n(class='form-control') }}
+            {{ form.d.label(class='form-label') }}
+            {{ form.d(class='form-control') }}
+            {{ form.t.label(class='form-label') }}
+            {{ form.t(class='form-control') }}
+            {{ form.c.label(class='form-label') }}
+            {{ form.c(class='form-control') }}
+            {{ form.e.label(class='form-label') }}
+            {{ form.e(class='form-control') }} <br>
+            {{ form.submit(class='form-control btn btn-success') }}
+
+        </form>
+
+    </div>
+    <div class="col"></div>
+</div>
+
+{% endblock %}

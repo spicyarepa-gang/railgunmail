@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-from backend.form import AccesoLogin
-from backend.models import Admin
+from backend.form import AccesoLogin, InsertarContactos
+from backend.models import Admin, Contactos
 from flask_login import login_required, login_user, logout_user
 from vendors.database import db
 
@@ -28,3 +28,21 @@ def close():
 @login_required
 def correos():
     return render_template('panel/admin.html')
+
+
+
+@email.route('/contactos/agregar', methods=['GET','POST'])
+@login_required
+def add_contactos():
+    add= InsertarContactos()
+    if add.validate_on_submit(): #validamos datos
+        n = add.n.data
+        d= add.d.data
+        t = add.t.data
+        c = add.c.data
+        e = add.e.data
+        add_contactos = Contactos(nombre=n,direccion=d,telefono=t,correo=c,empresa=e)
+        db.session.add(add_contactos)
+        db.session.commit()
+        return redirect(url_for('email.add_contactos'))
+    return render_template('contactos/agregar_contactos.html',form=add)
