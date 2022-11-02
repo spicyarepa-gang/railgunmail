@@ -23,3 +23,8 @@ def iniciar_sesion():
 def close():
     logout_user()
     return redirect(url_for('email.iniciar_sesion'))
+
+@email.route('/correos')
+@login_required
+def correos():
+    return render_template('panel/admin.html')
