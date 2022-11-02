@@ -18,7 +18,7 @@ app.register_blueprint(email)
 from flask_login import LoginManager
 login = LoginManager()
 login.init_app(app)
-login.login_view = 'login'
+login.login_view = 'email.iniciar_sesion'
 
 @app.teardown_appcontext
 def shutdown_database_conection(exception=None):
