@@ -7,7 +7,7 @@ from vendors.database import db
 email = Blueprint('email', __name__)
 
 from sqlalchemy import desc, asc
-@email.route('/view/contactos', methods=['GET', 'POST'])
+@email.route('/contactos/view', methods=['GET', 'POST'])
 @login_required
 def view_contactos():
     view_contactos = Contactos.query.order_by(desc('id'))
