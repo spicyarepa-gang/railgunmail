@@ -1,0 +1,25 @@
+{% extends 'base_email.html' %}
+
+{% block title %}Actualizar datos{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form action="{{ url_for('email.update_contactos', id=data.id) }}" method="POST">
+            <label for="">Cambio de Nombre</label><br>
+            <input type="text" name="nombre" class='form-control' value="{{ data.nombre }}"><br>
+            <label for="">Cambio de Direccion</label><br>
+            <input type="text" name="direccion"class='form-control'  value="{{ data.direccion }}"><br>
+            <label for="">Cambio de Telefono</label><br>
+            <input type="text" name="telefono" class='form-control' value="{{ data.telefono }}"><br>
+            <label for="">Cambio de Correo</label><br>
+            <input type="text" name="correo" class='form-control' value="{{ data.correo }}"><br>
+            <label for="">Cambio de Empresa</label><br>
+            <input type="text" name="correo" class='form-control' value="{{ data.empresa }}"><br>
+            <button type="submit" class='form-control btn btn-success'>Enviar</button>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

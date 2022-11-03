@@ -22,8 +22,8 @@
         <td>{{ item.correo }}</td>
         <td>{{ item.empresa }}</td>
         <td>
-            <a href=""><button type="submit" class="btn btn-danger">Borrar</button></a>
-            <a href=""><button type="submit" class="btn btn-success">Editar</button></a>
+            <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
+            <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
         </td>
     </tbody>
     {% endfor %}
