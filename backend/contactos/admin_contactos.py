@@ -55,3 +55,26 @@ from sqlalchemy import desc, asc
 def view_contactos():
     view_contactos = Contactos.query.order_by(desc('id'))
     return render_template('contactos/view_contactos.html', datos=view_contactos)
+
+@email.route('/contactos/view/update/<string:id>')
+@login_required
+def update_contactos():
+    data = Contactos.query.get('id')
+    if request.method == 'POST':
+        data.nombre = request.form['nombre']
+        data.direccion = request.form['direccion']
+        data.telefono = request.form['telefono']
+        data.correo = request.form['correo']
+        data.empresa = request.form['empresa']
+        db.session.commit()
+        return redirect('email.view_contactos')
+    return render_template('contactos/update_contacto')
+
+@email.route('/contactos/view/delete/<string:id>')
+@login_required
+def delete_contactos():
+    data = Contactos.query.get('id')
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for(email.view_contactos))
+    
