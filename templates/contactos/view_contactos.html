@@ -1,0 +1,32 @@
+{% extends 'base_email.html' %}
+
+
+{% block title %} Ver Contactos {% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>nombre</th>
+            <th>direccion</th>
+            <th>telefono</th>
+            <th>correo</th>
+            <th>empresa</th>
+        </tr>
+    </thead>
+    <tbody>
+ 
+    
+                <a href=""><button type="submit" class="btn btn-danger">Borrar</button></a>
+                <a href=""><button type="submit" class="btn btn-success">Editar</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
