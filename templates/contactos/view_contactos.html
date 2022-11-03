@@ -15,15 +15,17 @@
             <th>empresa</th>
         </tr>
     </thead>
+    {% for item in data %}
     <tbody>
- 
+                
     
                 <a href=""><button type="submit" class="btn btn-danger">Borrar</button></a>
                 <a href=""><button type="submit" class="btn btn-success">Editar</button></a>
             </td>
         </tr>
-        {% endfor %}
+    {% endfor %}
     </tbody>
+
 </table>
 
 {% endblock %}
