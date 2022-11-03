@@ -11,7 +11,7 @@ app.config.from_object(DevConfig)
 db.init_app(app)
 
 
-from backend.contactos.agregar_contactos import email
+from backend.contactos.admin_contactos import email
 app.register_blueprint(email)
 
 

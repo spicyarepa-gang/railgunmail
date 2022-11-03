@@ -23,13 +23,11 @@
                   Contactos
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Insertar</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Editar</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Borrar</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Ver lista de contactos</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Crear Grupos </a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Ver lista de grupos</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Ver grupo especifico</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('email.add_contactos')}}">Agregar contacto</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('email.view_contactos')}}">Ver lista de contactos</a></li>
+                  <li><a class="dropdown-item" href="">Crear Grupos </a></li>
+                  <li><a class="dropdown-item" href="">Ver lista de grupos</a></li>
+                  <li><a class="dropdown-item" href="">Ver grupo especifico</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -37,9 +35,9 @@
                   Mail Masivo
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Mail Simple</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Mail HTML</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('') }}">Mail WYSIWYG</a></li>
+                  <li><a class="dropdown-item" href="">Mail Simple</a></li>
+                  <li><a class="dropdown-item" href="">Mail HTML</a></li>
+                  <li><a class="dropdown-item" href="">Mail WYSIWYG</a></li>
                 </ul>
               </li>
               <li class="nav-item">
