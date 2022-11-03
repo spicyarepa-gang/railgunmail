@@ -54,7 +54,7 @@ from sqlalchemy import desc, asc
 @login_required
 def view_contactos():
     view_contactos = Contactos.query.order_by(desc('id'))
-    return render_template('contactos/view_contactos.html', datos=view_contactos)
+    return render_template('contactos/view_contactos.html', data=view_contactos)
 
 @email.route('/contactos/view/update/<string:id>')
 @login_required
