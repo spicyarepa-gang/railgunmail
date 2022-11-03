@@ -8,21 +8,25 @@
 <table class="table">
     <thead>
         <tr>
-            <th>nombre</th>
-            <th>direccion</th>
-            <th>telefono</th>
-            <th>correo</th>
-            <th>empresa</th>
+            <th>NOMBRE</th>
+            <th>DIRECCION</th>
+            <th>TELEFONO</th>
+            <th>CORREO</th>
+            <th>EMPRESA</th>
+            <th>OPCIONES</th>
         </tr>
     </thead>
     {% for item in data %}
     <tbody>
-                
-    
-                <a href=""><button type="submit" class="btn btn-danger">Borrar</button></a>
-                <a href=""><button type="submit" class="btn btn-success">Editar</button></a>
-            </td>
-        </tr>
+        <td>{{ elemento.nombre }}</td>
+        <td>{{ elemento.direccion }}</td>
+        <td>{{ elemento.telefono }}</td>
+        <td>{{ elemento.correo }}</td>
+        <td>{{ elemento.empresa }}</td>
+        <td>
+            <a href=""><button type="submit" class="btn btn-danger">Borrar</button></a>
+            <a href=""><button type="submit" class="btn btn-success">Editar</button></a>
+        </td>
     {% endfor %}
     </tbody>
 

@@ -38,7 +38,7 @@ def add_contactos():
     add= InsertarContactos()
     if add.validate_on_submit(): #validamos datos
         n = add.n.data
-        d= add.d.data
+        d = add.d.data
         t = add.t.data
         c = add.c.data
         e = add.e.data
@@ -53,5 +53,5 @@ from sqlalchemy import desc, asc
 @email.route('/contactos/view', methods=['GET', 'POST'])
 @login_required
 def view_contactos():
-    view_contactos = Contactos.query.all()
+    view_contactos = Contactos.query.order_by(desc('id'))
     return render_template('contactos/view_contactos.html', datos=view_contactos)
