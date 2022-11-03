@@ -6,7 +6,7 @@ from vendors.database import db
 
 email = Blueprint('email', __name__)
 
-
+#INICIAR SESION
 @email.route('/', methods=['GET', 'POST'])
 def iniciar_sesion():
     formulario_login = AccesoLogin()
@@ -18,6 +18,7 @@ def iniciar_sesion():
         return redirect(url_for('email.iniciar_sesion'))
     return render_template('login/login.html', data=formulario_login)
 
+#CERRAR SESION
 @email.route('/close')
 @login_required
 def close():
@@ -30,7 +31,7 @@ def correos():
     return render_template('panel/admin.html')
 
 
-
+#CONTACTOS ADD
 @email.route('/contactos/agregar', methods=['GET','POST'])
 @login_required
 def add_contactos():
@@ -46,3 +47,11 @@ def add_contactos():
         db.session.commit()
         return redirect(url_for('email.add_contactos'))
     return render_template('contactos/agregar_contactos.html',form=add)
+
+#CONTACTOS VIEW
+from sqlalchemy import desc, asc
+@email.route('/contactos/view', methods=['GET', 'POST'])
+@login_required
+def view_contactos():
+    view_contactos = Contactos.query.all()
+    return render_template('contactos/view_contactos.html', datos=view_contactos)
