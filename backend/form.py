@@ -15,4 +15,7 @@ class InsertarContactos(FlaskForm):
     t = StringField('Inserta telefono', validators=[DataRequired()])
     c = StringField('Inserta correo', validators=[DataRequired()])
     e = StringField('Inserta empresa', validators=[DataRequired()])
+    e = StringField('Inserta extencion', validators=[DataRequired()])
+    ca= StringField('Inserta cargo', validators=[DataRequired()])
+    de= StringField('Inserta departamento', validators=[DataRequired()])
     submit = SubmitField('Insertar')
