@@ -56,6 +56,7 @@ def view_contactos():
     view_contactos = Contactos.query.order_by(desc('id'))
     return render_template('contactos/view_contactos.html', data=view_contactos)
 
+#UPDATE CONTACTOS
 @email.route('/contactos/view/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_contactos(id):
@@ -70,6 +71,7 @@ def update_contactos(id):
         return redirect(url_for('email.view_contactos'))
     return render_template('contactos/update_contactos.html', data=data)
 
+#DELETE CONTACTOS
 @email.route('/contactos/view/delete/<int:id>')
 @login_required
 def delete_contactos(id):
