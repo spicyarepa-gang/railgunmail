@@ -12,7 +12,9 @@ db.init_app(app)
 
 
 from backend.contactos.admin_contactos import email
+from backend.groups.admin_groups import groups
 app.register_blueprint(email)
+app.register_blueprint(groups)
 
 
 from flask_login import LoginManager

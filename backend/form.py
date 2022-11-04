@@ -18,3 +18,7 @@ class InsertarContactos(FlaskForm):
     ca = StringField('Inserta cargo', validators=[DataRequired()])
     de = StringField('Inserta departamento', validators=[DataRequired()])
     submit = SubmitField('Insertar')
+
+class InsertarGroupType(FlaskForm):
+    nombre = StringField('Insertar el nombre del tipo de grupo', validators=[DataRequired()])
+    submit = SubmitField('Insertar')

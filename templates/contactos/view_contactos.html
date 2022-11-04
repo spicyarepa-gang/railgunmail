@@ -4,6 +4,10 @@
 {% block title %} Ver Contactos {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="col"><h4>LISTA DE CONTACTOS</h4></div>
+    <div class="col"><span class="float-end"><b>Añadir grupo: </b><a href="{{ url_for('email.add_contactos')}}" class="btn btn-success">+</a></span></div>
+</div><hr>
 
 <table class="table">
     <thead>

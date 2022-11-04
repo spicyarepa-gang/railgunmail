@@ -1,0 +1,31 @@
+{% extends 'base_email.html' %}
+
+
+{% block title %} Ver Grupos {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col"><h4>LISTA DE GRUPOS</h4></div>
+    <div class="col"><span class="float-end"><b>Añadir grupo: </b><a href="" class="btn btn-success">+</a></span></div>
+</div><hr>
+
+<table class="table">
+    <thead>
+        <th>NOMBRE</th>
+        <th>TIPO DE GRUPO</th>
+        <th>DEPENDENCIA</th>
+    </thead>
+    {% for item in data %}
+    <tbody>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.dependencia }}</td>
+        <td>
+            <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
+            <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
+        </td>
+    </tbody>
+    {% endfor %}
+</table>
+
+{% endblock %}
