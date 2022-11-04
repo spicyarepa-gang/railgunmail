@@ -79,4 +79,3 @@ def delete_contactos(id):
     db.session.delete(data)
     db.session.commit()
     return redirect(url_for('email.view_contactos'))
-    
