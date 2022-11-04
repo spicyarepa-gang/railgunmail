@@ -11,7 +11,9 @@
         <th>DIRECCION</th>
         <th>TELEFONO</th>
         <th>CORREO</th>
-        <th>EMPRESA</th>
+        <th>EXTENCION</th>
+        <th>CARGO</th>
+        <th>DEPARTAMENTO</th>
         <th>OPCIONES</th>
     </thead>
     {% for item in data %}
@@ -20,7 +22,9 @@
         <td>{{ item.direccion }}</td>
         <td>{{ item.telefono }}</td>
         <td>{{ item.correo }}</td>
-        <td>{{ item.empresa }}</td>
+        <td>{{ item.extencion }}</td>
+        <td>{{ item.cargo }}</td>
+        <td>{{ item.departamento }}</td>
         <td>
             <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
             <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>

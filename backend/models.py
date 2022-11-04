@@ -13,4 +13,6 @@ class Contactos(db.Model):
     direccion = db.Column(db.String(500), nullable=False)
     telefono = db.Column(db.String(200), nullable=False)
     correo = db.Column(db.String(300), nullable=False)
-    empresa = db.Column(db.String(300), nullable=False)
+    extencion = db.Column(db.String(300), nullable=False)
+    cargo = db.Column(db.String(300), nullable=False)
+    departamento = db.Column(db.String(300), nullable=False)
