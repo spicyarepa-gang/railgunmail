@@ -41,10 +41,10 @@ def add_contactos():
         d = add.d.data
         t = add.t.data
         c = add.c.data
-        e = add.e.data
+        ex = add.ex.data
         ca = add.ca.data
         de = add.de.data
-        add_contactos = Contactos(nombre=n,direccion=d,telefono=t,correo=c,extencion=e,cargo=ca,departamento=de)
+        add_contactos = Contactos(nombre=n,direccion=d,telefono=t,correo=c,extension=ex,cargo=ca,departamento=de)
         db.session.add(add_contactos)
         db.session.commit()
         return redirect(url_for('email.add_contactos'))
@@ -68,7 +68,7 @@ def update_contactos(id):
         data.direccion = request.form['direccion']
         data.telefono = request.form['telefono']
         data.correo = request.form['correo']
-        data.extencion = request.form['extencion']
+        data.extension = request.form['extension']
         data.cargo = request.form['cargo']
         data.departamento = request.form['departamento']
         db.session.commit()
