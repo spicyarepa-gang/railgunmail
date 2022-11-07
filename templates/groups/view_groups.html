@@ -17,13 +17,14 @@
         <th>DEPENDENCIA</th>
         <th>OPCIONES</th>
     </thead>
-    {% for item in data %}
+    {% for groups, groupstypes in data %}
     <tbody>
-        <td>{{ item.nombre }}</td>
-        <td>{{ item.dependencia }}</td>
+        <td>{{ groups.nombre }}</td>
+        <td>{{ groupstypes.nombre }}</td>
+        <td>{{ groups.dependencia }}</td>
         <td>
-            <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
-            <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
+            <a href="{{ url_for('email.delete_contactos', id=groups.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
+            <a href="{{ url_for('email.update_contactos', id=groups.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
         </td>
     </tbody>
     {% endfor %}

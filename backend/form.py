@@ -24,6 +24,6 @@ class InsertarGroupType(FlaskForm):
 
 class InsertarGroup(FlaskForm):
     nombre = StringField('Nombre del grupo', validators=[DataRequired()])
-    tipo = SelectField('Tipo de grupo', coerce=int, validators=[DataRequired()])
+    tipo = SelectField('Tipo de grupo', choices=[], validators=[DataRequired()])
     dependencia = StringField('Dependencia', validators=[DataRequired()])
     submit = SubmitField('Insertar')

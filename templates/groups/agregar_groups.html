@@ -11,13 +11,13 @@
         <form action="{{ url_for('groups.add_groups') }}" method="post">
  
             {{ form.hidden_tag() }}
-            {{ form.nombre.label(class='form-label') }}
-            {{ form.nombre(class='form-control') }} 
-            
-            {{ form.hidden_tag() }}
             {{ form.tipo.label(class='form-label') }}
             {{ form.tipo(class='form-select') }} 
 
+            {{ form.hidden_tag() }}
+            {{ form.nombre.label(class='form-label') }}
+            {{ form.nombre(class='form-control') }} 
+            
             {{ form.hidden_tag() }}
             {{ form.dependencia.label(class='form-label') }}
             {{ form.dependencia(class='form-control') }}<br>
