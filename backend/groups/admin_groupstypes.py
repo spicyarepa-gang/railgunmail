@@ -31,7 +31,14 @@ def update_groupstypes(id):
         return redirect(url_for('groupstypes.view_groups_types'))
     return render_template('groups/update_groups_types.html', data=data)
 
-
+#DELETE CONTACTOS
+@groupstypes.route('/groupstypes/view/delete/<int:id>')
+@login_required
+def delete_groupstypes(id):
+    data = GroupsTypes.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for('groupstypes.view_groups_types'))
 
 
 

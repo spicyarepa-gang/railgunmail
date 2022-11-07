@@ -1,0 +1,27 @@
+{% extends 'base_email.html' %}
+
+{% block title %} Agregar Grupos {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+
+        <form action="{{ url_for('groups.add_groups') }}" method="post">
+ 
+            {{ form.hidden_tag() }}
+            {{ form.nombre.label(class='form-label') }}
+            {{ form.nombre(class='form-control') }} 
+            {{ form.hidden_tag() }}
+            {{ form.dependencia.label(class='form-label') }}
+            {{ form.dependencia(class='form-control') }}<br>
+            {{ form.submit(class='form-control btn btn-success') }}
+
+        </form>
+
+    </div>
+    <div class="col"></div>
+</div>
+
+{% endblock %}
