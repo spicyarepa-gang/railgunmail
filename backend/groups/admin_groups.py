@@ -6,13 +6,7 @@ from vendors.database import db
 
 groups = Blueprint('groups', __name__)
 
-#GROUPSTYPES VIEW
-from sqlalchemy import desc, asc
-@groups.route('/groupsTypes/view', methods=['GET', 'POST'])
-@login_required
-def view_groups_types():
-    view_groups_types = GroupsTypes.query.order_by(desc('id'))
-    return render_template('groups/view_groups_types.html', data=view_groups_types)
+
 
 #GROUPS VIEW
 from sqlalchemy import desc, asc

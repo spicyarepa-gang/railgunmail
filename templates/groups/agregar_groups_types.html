@@ -1,0 +1,24 @@
+{% extends 'base_email.html' %}
+
+{% block title %} Agregar {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+
+        <form action="{{ url_for('groupstypes.add_groups_types') }}" method="post">
+ 
+            {{ form.hidden_tag() }}
+            {{ form.nombre.label(class='form-label') }}
+            {{ form.nombre(class='form-control') }} <br>
+            {{ form.submit(class='form-control btn btn-success') }}
+
+        </form>
+
+    </div>
+    <div class="col"></div>
+</div>
+
+{% endblock %}
