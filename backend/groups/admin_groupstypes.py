@@ -20,6 +20,16 @@ def add_groups_types():
     return render_template('groups/agregar_groups_types.html',form=add)
     
 
+#UPDATE TIPOS DE GRUPOS
+@groupstypes.route('/groupstypes/view/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update_groupstypes(id):
+    data = GroupsTypes.query.get(id)
+    if request.method == 'POST':
+        data.nombre = request.form['nombre']
+        db.session.commit()
+        return redirect(url_for('groupstypes.view_groups_types'))
+    return render_template('groups/update_groups_types.html', data=data)
 
 
 
