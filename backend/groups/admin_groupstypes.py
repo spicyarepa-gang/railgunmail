@@ -16,7 +16,7 @@ def add_groups_types():
         add_groups_types = GroupsTypes(nombre=nombre)
         db.session.add(add_groups_types)
         db.session.commit()
-        return redirect(url_for('groups.add_groups_types'))  
+        return redirect(url_for('groupstypes.view_groups_types'))  
     return render_template('groups/agregar_groups_types.html',form=add)
     
 

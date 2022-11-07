@@ -1,4 +1,8 @@
 env/
-__pycache__/
+./__pycache__
 vendors/__pycache__/
 backend/__pycache__/
+*.pyc
+*.pyc
+*.pyc
+*.pyc
