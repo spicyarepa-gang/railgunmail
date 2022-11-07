@@ -10,11 +10,15 @@ groups = Blueprint('groups', __name__)
 @groups.route('/groups/agregar', methods=['GET','POST'])
 @login_required
 def add_groups():
+    available_types = GroupsTypes.query.all()
+    group_types = [(i.id, i.nombre) for i in available_types]
     add= InsertarGroup ()
-    if add.validate_on_submit(): #validamos datos
+    add.id.choices = group_types
+    if add.validate_on_submit(): #validamos datos   
         nombre = add.nombre.data
+        tipo = add.tipo.data(add.nombre.data,add.id.data)
         dependencia = add.dependencia.data
-        add_groups = Groups(nombre=nombre,dependencia=dependencia)
+        add_groups = Groups(nombre=nombre,dependencia=dependencia,tipo=tipo)
         db.session.add(add_groups)
         db.session.commit()
         return redirect(url_for('groups.add_groups'))
@@ -27,3 +31,4 @@ from sqlalchemy import desc, asc
 def view_groups():
     view_groups = Groups.query.order_by(desc('id'))
     return render_template('groups/view_groups.html', data=view_groups)
+
