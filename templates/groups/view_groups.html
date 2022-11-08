@@ -4,15 +4,31 @@
 {% block title %} Ver Grupos {% endblock %}
 
 {% block content %}
+<div id="modal" class="modal animate__animated animate__fadeIn">
+  <div class="modal-close">
+    <span class=""><h3>Detalles del grupo</h3></span>
+    <span class="leave"><a href="javascript:toggle_menu()"><i class="bi bi-x-circle"></i></a></span>
+  </div>
+  <div class="modal-main">
+    <hr>
+    <div class="sub-grupos">
+      <div class="toggle-title">
+        <h6>SUB GRUPOS</h6>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div id="background" class="background animate__animated animate__fadeIn"></div>
 
 <div class="row">
     <div class="col mt-3"><h4>GRUPOS REGISTRADOS</h4></div>
     <div class="col mt-3"><span class="float-end"><b>Añadir grupo: </b><a href="{{ url_for('groups.add_groups') }}" class="btn btn-success">+</a></span></div>
 </div><hr>
 
-<table id="table" class="table table-stripped">
+<table id="table" class="table table-stripped w-100">
     <thead>
-        <th>NOMBRE</th>
+        <th class="col-2">NOMBRE</th>
         <th>TIPO DE GRUPO</th>
         <th>DEPENDENCIA</th>
         <th>OPCIONES</th>
@@ -20,31 +36,28 @@
     {% for groups, groupstypes in data %}
     <tbody>
         <tr>
-            <td>{{ groups.nombre }}
+            <td>{{ groups.nombre }} <a href="javascript:toggle()"><i class="bi bi-arrow-down-short"></i></a>
                 
                 <!-- Informacion (Toggle) -->
-                <ol id="toggle" style="display: none;margin-bottom: 0;padding: 0;">
+                <ol id="toggle" class="animate__animated animate__fadeIn" style="display: none;margin-bottom: 0;padding: 0;">
                     <div class="toggle-title">
                         
                         <span><b>Sub-Gruposㅤ</b></span>
                         <!-- Abrir ventana modal para añadir grupos -->
                         <div class="opcion"> 
-                            <a id="">
+                            <a href="javascript:toggle_menu()">
                                 <img src='https://img2.freepng.es/20180426/dqe/kisspng-computer-icons-editing-pencil-icon-5ae26c015e2166.6839283515247882253856.jpg' width='15px' title='desplegar ventana flotante'>
                             </a>
                         </div>
                     </div>
                     <!-- DISPLAY DE SUBGRUPOS -->
                     <li>Sub-grupo1</li>
-                    <li>Sub-grupo2</li>
-                    <li>Sub-grupo3</li>
                 </ol>
                 
             </td>
             <td>{{ groupstypes.nombre }}</td>
             <td>{{ groups.dependencia }}</td>
             <td>
-                <button onclick="toggle()" class="btn btn-primary">Sub-Grupos</button>
                 <a href="{{ url_for('email.delete_contactos', id=groups.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
                 <a href="{{ url_for('email.update_contactos', id=groups.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
             </td>
@@ -56,13 +69,16 @@
 
 {% block scripts %}
 <script>
-function toggle_form() {
-  var toggle = document.getElementById("toggle");
+function toggle_menu() {
+  var toggle_menu = document.getElementById("modal");
+  var toggle_bg = document.getElementById("background");
 
-  if (toggle.style.display === "none") {
-    toggle.style.display = "block";
+  if (toggle_menu.style.display === "none" && toggle_bg.style.display === "none") {
+    toggle_menu.style.display = "block";
+    toggle_bg.style.display = "block";
   } else {
-    toggle.style.display = "none";
+    toggle_menu.style.display = "none";
+    toggle_bg.style.display = "none";
   }
 }
 
