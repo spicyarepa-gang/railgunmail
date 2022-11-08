@@ -10,7 +10,7 @@
     <div class="col mt-3"><span class="float-end"><b>Añadir grupo: </b><a href="{{ url_for('groups.add_groups') }}" class="btn btn-success">+</a></span></div>
 </div><hr>
 
-<table class="table">
+<table id="table" class="table table-stripped">
     <thead>
         <th>NOMBRE</th>
         <th>TIPO DE GRUPO</th>
@@ -19,15 +19,61 @@
     </thead>
     {% for groups, groupstypes in data %}
     <tbody>
-        <td>{{ groups.nombre }}</td>
-        <td>{{ groupstypes.nombre }}</td>
-        <td>{{ groups.dependencia }}</td>
-        <td>
-            <a href="{{ url_for('email.delete_contactos', id=groups.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
-            <a href="{{ url_for('email.update_contactos', id=groups.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
-        </td>
+        <tr>
+            <td>{{ groups.nombre }}
+                
+                <!-- Informacion (Toggle) -->
+                <ol id="toggle" style="display: none;margin-bottom: 0;padding: 0;">
+                    <div class="toggle-title">
+                        
+                        <span><b>Sub-Gruposㅤ</b></span>
+                        <!-- Abrir ventana modal para añadir grupos -->
+                        <div class="opcion"> 
+                            <a id="">
+                                <img src='https://img2.freepng.es/20180426/dqe/kisspng-computer-icons-editing-pencil-icon-5ae26c015e2166.6839283515247882253856.jpg' width='15px' title='desplegar ventana flotante'>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- DISPLAY DE SUBGRUPOS -->
+                    <li>Sub-grupo1</li>
+                    <li>Sub-grupo2</li>
+                    <li>Sub-grupo3</li>
+                </ol>
+                
+            </td>
+            <td>{{ groupstypes.nombre }}</td>
+            <td>{{ groups.dependencia }}</td>
+            <td>
+                <button onclick="toggle()" class="btn btn-primary">Sub-Grupos</button>
+                <a href="{{ url_for('email.delete_contactos', id=groups.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
+                <a href="{{ url_for('email.update_contactos', id=groups.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
+            </td>
+        </tr>
     </tbody>
     {% endfor %}
 </table>
+{% endblock %}
 
+{% block scripts %}
+<script>
+function toggle_form() {
+  var toggle = document.getElementById("toggle");
+
+  if (toggle.style.display === "none") {
+    toggle.style.display = "block";
+  } else {
+    toggle.style.display = "none";
+  }
+}
+
+function toggle() {
+  var toggle = document.getElementById("toggle");
+
+  if (toggle.style.display === "none") {
+    toggle.style.display = "block";
+  } else {
+    toggle.style.display = "none";
+  }
+}
+</script>
 {% endblock %}

@@ -9,13 +9,13 @@ class AccesoLogin(FlaskForm):
     entrar = SubmitField('Entrar')
 
 class InsertarContactos(FlaskForm):
-    n = StringField('Inserta nombre', validators=[DataRequired()]) 
-    d = StringField('Inserta direccion', validators=[DataRequired()])
-    t = StringField('Inserta telefono', validators=[DataRequired()])
-    c = StringField('Inserta correo', validators=[DataRequired()])
-    ex = StringField('Inserta extension', validators=[DataRequired()])
-    ca = StringField('Inserta cargo', validators=[DataRequired()])
-    de = StringField('Inserta departamento', validators=[DataRequired()])
+    nombre = StringField('Inserta nombre', validators=[DataRequired()]) 
+    direccion = StringField('Inserta direccion', validators=[DataRequired()])
+    telefono = StringField('Inserta telefono', validators=[DataRequired()])
+    correo = StringField('Inserta correo', validators=[DataRequired()])
+    extension = StringField('Inserta extension', validators=[DataRequired()])
+    cargo = StringField('Inserta cargo', validators=[DataRequired()])
+    departamento = StringField('Inserta departamento', validators=[DataRequired()])
     submit = SubmitField('Insertar')
 
 class InsertarGroupType(FlaskForm):

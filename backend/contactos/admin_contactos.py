@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from backend.form import AccesoLogin, InsertarContactos
-from backend.models import Admin, Contactos
+from backend.models import Admin, Contactos, Groups
 from flask_login import login_required, login_user, logout_user
 from vendors.database import db
 
@@ -37,14 +37,15 @@ def correos():
 def add_contactos():
     add= InsertarContactos()
     if add.validate_on_submit(): #validamos datos
-        n = add.n.data
-        d = add.d.data
-        t = add.t.data
-        c = add.c.data
-        ex = add.ex.data
-        ca = add.ca.data
-        de = add.de.data
-        add_contactos = Contactos(nombre=n,direccion=d,telefono=t,correo=c,extension=ex,cargo=ca,departamento=de)
+        nombre = add.nombre.data
+        direccion = add.direccion.data
+        telefono = add.telefono.data
+        correo = add.correo.data
+        extension = add.extension.data
+        cargo = add.cargo.data
+        departamento = add.departamento.data
+        
+        add_contactos = Contactos(nombre=nombre,direccion=direccion,telefono=telefono,correo=correo,extension=extension,cargo=cargo,departamento=departamento)
         db.session.add(add_contactos)
         db.session.commit()
         return redirect(url_for('email.add_contactos'))
