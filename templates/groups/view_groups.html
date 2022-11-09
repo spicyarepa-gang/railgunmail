@@ -40,11 +40,11 @@
     <tbody>
       
         <tr>
-            <td>{{ groups.nombre }} <a href="javascript:toggle_menu()"><img src='https://img2.freepng.es/20180426/dqe/kisspng-computer-icons-editing-pencil-icon-5ae26c015e2166.6839283515247882253856.jpg' width='15px' title='desplegar ventana flotante'></a></td>
+            <td>{{ groups.nombre }}</td>
             <td>{{ groupstypes.nombre }}</td>
             <td>{{ groups.dependencia }}</td>
             <td>
-                <a href="{{ url_for('email.update_contactos', id=groups.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
+                <a href="javascript:toggle_menu()"><button class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
                 <a href="{{ url_for('email.delete_contactos', id=groups.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
             </td>
         </tr>

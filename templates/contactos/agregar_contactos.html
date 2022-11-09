@@ -3,13 +3,13 @@
 {% block title %} Agregar {% endblock %}
 
 {% block content %}
+<h2 class="mt-2">NUEVO CONTACTO</h2><hr>
 <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
     <form action="{{ url_for('email.add_contactos') }}" method="post">
-        <h2 class="">NUEVO CONTACTO</h2><hr>
         {{ form.hidden_tag() }}
-        <div class="row mt-1">
+        <div class="row">
             <div class="col-sm">
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col-sm">
                         {{ form.nombre.label(class='form-label') }}
                         {{ form.nombre(class='form-control w-100 animate__animated animate__fadeInDown') }}
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="col-sm">
-                <div class="row mt-2">
+                <div class="row">
                     <div class="row">
                         <div class="col-sm">
                             {{ form.correo.label(class='form-label') }}
