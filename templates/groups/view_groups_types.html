@@ -4,28 +4,28 @@
 {% block title %} Ver tipos de grupos {% endblock %}
 
 {% block content %}
-
 <div class="row">
     <div class="col mt-3"><h4>TIPOS DE GRUPOS</h4></div>
-    <div class="col mt-3"><span class="float-end"><b>Añadir tipos: </b><a href="{{  url_for('groupstypes.add_groups_types')}}" class="btn btn-success">+</a></span></div>
+    <div class="col mt-3"><span class="float-end"><b>Añadir tipos: </b><a href="{{  url_for('groupstypes.add_groups_types')}}" class="btn btn-light"><i class="bi bi-plus-lg"></i></a></span></div>
 </div><hr>
 
-<table class="table">
-    <thead>
-        <th>ID</th>
-        <th>NOMBRE</th>
-        <th>OPCIONES</th>
-    </thead>
-    {% for item in data %}
-    <tbody>
-        <td>{{ item.id }}</td>
-        <td>{{ item.nombre }}</td>
-        <td>
-            <a href="{{ url_for('groupstypes.delete_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
-            <a href="{{ url_for('groupstypes.update_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
-        </td>
-    </tbody>
-    {% endfor %}
-</table>
-
+<div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>OPCIONES</th>
+        </thead>
+        {% for item in data %}
+        <tbody>
+            <td>{{ item.id }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>
+                <a href="{{ url_for('groupstypes.update_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
+                <a href="{{ url_for('groupstypes.delete_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
+            </td>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

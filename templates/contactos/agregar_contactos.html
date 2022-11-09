@@ -3,34 +3,61 @@
 {% block title %} Agregar {% endblock %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col"></div>
-    <div class="col">
-
-        <form action="{{ url_for('email.add_contactos') }}" method="post">
- 
-            {{ form.hidden_tag() }}
-            {{ form.n.label(class='form-label') }}
-            {{ form.n(class='form-control') }}
-            {{ form.d.label(class='form-label') }}
-            {{ form.d(class='form-control') }}
-            {{ form.t.label(class='form-label') }}
-            {{ form.t(class='form-control') }}
-            {{ form.c.label(class='form-label') }}
-            {{ form.c(class='form-control') }}
-            {{ form.ex.label(class='form-label') }}
-            {{ form.ex(class='form-control') }}
-            {{ form.ca.label(class='form-label') }}
-            {{ form.ca(class='form-control') }}
-            {{ form.de.label(class='form-label') }}
-            {{ form.de(class='form-control') }} <br>
-            {{ form.submit(class='form-control btn btn-success') }}
-
-        </form>
-
-    </div>
-    <div class="col"></div>
+<div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+    <form action="{{ url_for('email.add_contactos') }}" method="post">
+        <h2 class="">NUEVO CONTACTO</h2><hr>
+        {{ form.hidden_tag() }}
+        <div class="row mt-1">
+            <div class="col-sm">
+                <div class="row mt-2">
+                    <div class="col-sm">
+                        {{ form.nombre.label(class='form-label') }}
+                        {{ form.nombre(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm">
+                        {{ form.departamento.label(class='form-label') }}
+                        {{ form.departamento(class='form-control w-100 animate__animated animate__fadeInDown') }} 
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm">
+                        {{ form.telefono.label(class='form-label') }}
+                        {{ form.telefono(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="row mt-2">
+                    <div class="row">
+                        <div class="col-sm">
+                            {{ form.correo.label(class='form-label') }}
+                            {{ form.correo(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm">
+                            {{ form.extension.label(class='form-label') }}
+                            {{ form.extension(class='form-control w-100 animate__animated animate__fadeInDown ') }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm">
+                            {{ form.cargo.label(class='form-label') }}
+                            {{ form.cargo(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 mb-2">
+                <div class="col-12">
+                    {{ form.direccion.label(class='form-label') }}
+                    {{ form.direccion(class='form-control animate__animated animate__fadeInDown') }}
+                </div>
+            </div>
+        </div>
+        {{ form.submit(class='form-control btn btn-success w-100') }}
+    </form>
 </div>
-
 {% endblock %}

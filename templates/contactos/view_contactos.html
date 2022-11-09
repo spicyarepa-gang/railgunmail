@@ -6,35 +6,40 @@
 {% block content %}
 <div class="row">
     <div class="col mt-3"><h4>LISTA DE CONTACTOS</h4></div>
-    <div class="col mt-3"><span class="float-end"><b>Añadir contactos: </b><a href="{{ url_for('email.add_contactos')}}" class="btn btn-success">+</a></span></div>
+    <div class="col mt-3"><span class="float-end"><b>Añadir contactos: </b><a href="{{ url_for('email.add_contactos')}}" class="btn btn-light"><i class="bi bi-plus-lg"></i></a></span></div>
 </div><hr>
 
-<table class="table">
-    <thead>
-        <th>NOMBRE</th>
-        <th>DIRECCION</th>
-        <th>TELEFONO</th>
-        <th>CORREO</th>
-        <th>EXTENSION</th>
-        <th>CARGO</th>
-        <th>DEPARTAMENTO</th>
-        <th>OPCIONES</th>
-    </thead>
-    {% for item in data %}
-    <tbody>
-        <td>{{ item.nombre }}</td>
-        <td>{{ item.direccion }}</td>
-        <td>{{ item.telefono }}</td>
-        <td>{{ item.correo }}</td>
-        <td>{{ item.extension }}</td>
-        <td>{{ item.cargo }}</td>
-        <td>{{ item.departamento }}</td>
-        <td>
-            <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
-            <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
-        </td>
-    </tbody>
-    {% endfor %}
-</table>
+<div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <th>NOMBRE</th>
+                <th>DIRECCION</th>
+                <th>TELEFONO</th>
+                <th>CORREO</th>
+                <th>EXTENSION</th>
+                <th>CARGO</th>
+                <th>DEPARTAMENTO</th>
+                <th>OPCIONES</th>
+            </thead>
+            {% for item in data %}
+            <tbody>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.direccion }}</td>
+                <td>{{ item.telefono }}</td>
+                <td>{{ item.correo }}</td>
+                <td>{{ item.extension }}</td>
+                <td>{{ item.cargo }}</td>
+                <td>{{ item.departamento }}</td>
+                <td>
+                    <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
+                    <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
+                </td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
 
 {% endblock %}
