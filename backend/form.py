@@ -19,16 +19,16 @@ class InsertarContactos(FlaskForm):
     submit = SubmitField('Añadir contacto')
 
 class InsertarGroupType(FlaskForm):
-    nombre = StringField('Insertar el nombre del tipo de grupo', validators=[DataRequired()])
-    submit = SubmitField('Insertar')
+    nombre = StringField('Nombre del tipo de grupo', validators=[DataRequired()])
+    submit = SubmitField('Ingresar')
 
 class InsertarGroup(FlaskForm):
-    nombre = StringField('Nombre del grupo', validators=[DataRequired()])
-    tipo = SelectField('Tipo de grupo', choices=[], validators=[DataRequired()])
-    dependencia = StringField('Dependencia', validators=[DataRequired()])
-    submit = SubmitField('Insertar')
+    nombre = StringField('Nombre del grupo:', validators=[DataRequired()])
+    tipo = SelectField('Tipo de grupo:', choices=[], validators=[DataRequired()])
+    dependencia = StringField('Dependencia:', validators=[DataRequired()])
+    submit = SubmitField('Ingresar')
 
 class InsertarSubGrupos(FlaskForm):
-    nombre = StringField('Inserta nombre', validators=[DataRequired()]) 
-    submit = SubmitField('Insertar')
+    nombre = StringField('Nombre del subgrupo:', validators=[DataRequired()]) 
+    submit = SubmitField('Ingresar')
 

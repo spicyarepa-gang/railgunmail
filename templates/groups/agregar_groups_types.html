@@ -3,22 +3,21 @@
 {% block title %} Agregar {% endblock %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col"></div>
-    <div class="col">
-
-        <form action="{{ url_for('groupstypes.add_groups_types') }}" method="post">
- 
-            {{ form.hidden_tag() }}
-            {{ form.nombre.label(class='form-label') }}
-            {{ form.nombre(class='form-control') }} <br>
-            {{ form.submit(class='form-control btn btn-success') }}
-
-        </form>
-
+<h2 class="mt-2">NUEVO TIPO DE GRUPO</h2><hr>
+<div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+    <div class="row">
+        <div class="col">
+            <form action="{{ url_for('groupstypes.add_groups_types') }}" method="post">
+     
+                {{ form.hidden_tag() }}
+                {{ form.nombre.label(class='form-label') }}
+                {{ form.nombre(class='form-control') }} <br>
+                {{ form.submit(class='form-control btn btn-success') }}
+    
+            </form>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
     </div>
-    <div class="col"></div>
 </div>
-
 {% endblock %}
