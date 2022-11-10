@@ -18,11 +18,11 @@ td:hover{
 }
 
 .navbar{
-  background: rgb(2,0,36);
-  background: -moz-linear-gradient(287deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,41,121,1) 35%, rgba(7,32,102,1) 100%);
-  background: -webkit-linear-gradient(287deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,41,121,1) 35%, rgba(7,32,102,1) 100%);
-  background: linear-gradient(287deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,41,121,1) 35%, rgba(7,32,102,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#072066",GradientType=1);
+  background: rgb(27,92,189);
+  background: -moz-linear-gradient(141deg, rgba(27,92,189,1) 62%, rgba(27,161,189,1) 100%);
+  background: -webkit-linear-gradient(141deg, rgba(27,92,189,1) 62%, rgba(27,161,189,1) 100%);
+  background: linear-gradient(141deg, rgba(27,92,189,1) 62%, rgba(27,161,189,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1b5cbd",endColorstr="#1ba1bd",GradientType=1);
 }
 
 .toggle-title{
