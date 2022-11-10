@@ -13,6 +13,10 @@ td:hover{
   background-color: rgba(145, 145, 145, 0.199);
 }
 
+.base-login{
+  background-color: rgba(131, 131, 131, 0.315);
+}
+
 .navbar{
   background: rgb(2,0,36);
   background: -moz-linear-gradient(287deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,41,121,1) 35%, rgba(7,32,102,1) 100%);
