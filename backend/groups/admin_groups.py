@@ -46,6 +46,14 @@ def update_groups(id):
     return render_template('groups/update_groups.html', groupstype_list=get_data,data=data)
 
 
+@groups.route('/groups/view/delete/<int:id>')
+@login_required
+def delete_groups(id):
+    data = Groups.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for('groups.view_groups'))
+
 
 
 

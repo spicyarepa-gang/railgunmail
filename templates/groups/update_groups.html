@@ -11,9 +11,9 @@
             <label for="">nombre </label>
             <input type="text" name="nombre" value="{{ data.nombre }}" class="form-control">
             <label for="">tipo de grupo </label>
-            <select name="id_type" id="" class="form-control" required>
+            <select name="tipo" id="" class="form-control" required>
                 {% for groupstype in groupstype_list %}
-                <option name="id_type" value="{{ groupstype.id }}">{{ groupstype.nombre }}</option> <!--groupstype.id-->
+                <option name="tipo" value="{{ groupstype.id }}">{{ groupstype.nombre }}</option> <!--groupstype.id-->
                 {% endfor %}
             </select>
             <label for="">dependencia </label>
