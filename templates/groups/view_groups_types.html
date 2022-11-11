@@ -14,13 +14,13 @@
         <thead>
             <th>ID</th>
             <th>NOMBRE</th>
-            <th>OPCIONES</th>
+            <th class="text-end">OPCIONES</th>
         </thead>
         {% for item in data %}
         <tbody>
             <td>{{ item.id }}</td>
             <td>{{ item.nombre }}</td>
-            <td>
+            <td class="text-end">
                 <a href="{{ url_for('groupstypes.update_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
                 <a href="{{ url_for('groupstypes.delete_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
             </td>

@@ -9,22 +9,7 @@
   <div class="col mt-3"><h4>GRUPOS REGISTRADOS</h4></div>
   <div class="col mt-3"><span class="float-end"><b>Añadir grupo: </b><a href="{{ url_for('groups.add_groups') }}" class="btn btn-light"><i class="bi bi-plus-lg"></i></a></span></div>
 </div><hr>
-<!-- Ventana modal -->
-<div id="modal" class="modal animate__animated animate__fadeInDown">
-  <div class="modal-close">
-    <span class=""><h3>Detalles del grupo</h3></span>
-    <span class="leave"><a href="javascript:toggle_menu()"><i class="bi bi-x-circle"></i></a></span>
-  </div>
-  <div class="modal-main">
-    <hr>
-    <div class="sub-grupos">
-      <div class="toggle-title">
-        <h6>SUB GRUPOS</h6>
-        
-      </div>
-    </div>
-  </div>
-</div>
+
 <div id="background" class="background animate__animated animate__fadeIn"></div>
 
 <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
@@ -35,7 +20,7 @@
           <th class="col-2">NOMBRE</th>
           <th>TIPO DE GRUPO</th>
           <th>DEPENDENCIA</th>
-          <th>OPCIONES</th>
+          <th class="text-end">OPCIONES</th>
       </thead>
       {% for groups, groupstypes in data %}
       <tbody>
@@ -44,8 +29,8 @@
               <td>{{ groups.nombre }}</td>
               <td>{{ groupstypes.nombre }}</td>
               <td>{{ groups.dependencia }}</td>
-              <td>
-                  <a href="javascript:toggle_menu()"><button class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
+              <td class="text-end">
+                  <a href=""><button class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
                   <a href="{{ url_for('email.delete_contactos', id=groups.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
               </td>
           </tr>
@@ -54,22 +39,4 @@
     </table>
   </div>
 </div>
-{% endblock %}
-
-<!-- Javascript -->
-{% block scripts %}
-<script>
-function toggle_menu() {
-  var toggle_menu = document.getElementById("modal");
-  var toggle_bg = document.getElementById("background");
-
-  if (toggle_menu.style.display === "none" && toggle_bg.style.display === "none") {
-    toggle_menu.style.display = "block";
-    toggle_bg.style.display = "block";
-  } else {
-    toggle_menu.style.display = "none";
-    toggle_bg.style.display = "none";
-  }
-}
-</script>
 {% endblock %}

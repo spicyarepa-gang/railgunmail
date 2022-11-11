@@ -28,7 +28,7 @@ class InsertarGroup(FlaskForm):
     dependencia = StringField('Dependencia:', validators=[DataRequired()])
     submit = SubmitField('Ingresar')
 
-class InsertarSubGrupos(FlaskForm):
+class InsertarSubGroups(FlaskForm):
+    grupo = SelectField('Grupo perteneciente:', choices=[], validators=[DataRequired()])
     nombre = StringField('Nombre del subgrupo:', validators=[DataRequired()]) 
     submit = SubmitField('Ingresar')
-

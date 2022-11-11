@@ -40,8 +40,6 @@ def delete_groupstypes(id):
     db.session.commit()
     return redirect(url_for('groupstypes.view_groups_types'))
 
-
-
 #GROUPSTYPES VIEW
 from sqlalchemy import desc, asc
 @groupstypes.route('/groupsTypes/view', methods=['GET', 'POST'])
