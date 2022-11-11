@@ -9,18 +9,16 @@
     <div class="row">
         <div class="col">
             <label for="">nombre </label>
-            <input type="text" name="nombre" value="{{ data.id }}" class="form-control">
-            
-        <div class="col">
-            <label for="">tipo de grupo: </label>
-            <select name="tipo" id="" class="form-control" required>
-                <option value="" autofocus></option><br>
-            <label for="">dependencia </label>
-            <input type="text" name="dependencia" value="{{ data.id }}" class="form-control">
+            <input type="text" name="nombre" value="{{ data.nombre }}" class="form-control">
+            <label for="">tipo de grupo </label>
+            <select name="id_type" id="" class="form-control" required>
                 {% for groupstype in groupstype_list %}
-                <option name="id_type" value="{{ groupstype.id }}">{{ groupstype.id }}</option> <!--groupstype.id-->
+                <option name="id_type" value="{{ groupstype.id }}">{{ groupstype.nombre }}</option> <!--groupstype.id-->
                 {% endfor %}
-            </select><br>
+            </select>
+            <label for="">dependencia </label>
+            <input type="text" name="dependencia" value="{{ data.dependencia }}" class="form-control"><br>
+           
             <button type="submit" class="form-control btn btn-success">Guardar </button>
         </div>
     </div>
