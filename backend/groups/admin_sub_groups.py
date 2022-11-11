@@ -33,6 +33,17 @@ def add_subgroups():
         return redirect(url_for('subgroups.add_subgroups'))
     return render_template('groups/agregar_subgrupos.html',form=add)
 
+@subgroups.route('/subgroups/update/<int:id>', methods=['GET','POST'])
+@login_required
+def update_subgroups(id):
+    data = Groups.query.get(id)
+    if request.method == 'POST':
+        data.grupo = request.form['grupo']
+        data.nombre = request.form['nombre']
+        db.session.commit()
+        return redirect(url_for('subgroups.view_subgroups'))
+    return render_template('groups/update_subgroups.html',data=data)
+
 
 
 
