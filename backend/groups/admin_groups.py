@@ -31,3 +31,30 @@ def view_groups():
     view_groups = db.session.query(Groups, GroupsTypes).select_from(Groups).join(GroupsTypes).all()
     return render_template('groups/view_groups.html', data=view_groups)
 
+#UPDATE GRUPOS
+@groups.route('/groups/view/update/<string:id>', methods=['GET', 'POST'])
+@login_required
+def update_groups(id):
+    get_data = GroupsTypes.query.all()
+    data = Groups.query.get(id)
+    if request.method == 'POST':
+        data.nombre = request.form['nombre']
+        data.id_type = request.form['tipo']
+        data.dependencia = request.form['dependencia']
+        db.session.commit()
+        return redirect(url_for('groups.view_groups'))
+    return render_template('groups/update_groups.html', groupstype_list=get_data,data=data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,28 +5,20 @@
 {% block content %} 
 <div class="container">
     <h1 class="mt-5 mb-4">Editar grupos </h1>
-<form action="{{ url_for('groups.update_groups', id=groupstype.id) }}" method="post">
+<form action="{{ url_for('groups.update_groups', id=data.id) }}" method="post">
     <div class="row">
         <div class="col">
-         <!--  <label for="">Nombre mascota: </label>
-            <input type="text" name="nom" value="{{ mascota.nombre }}" class="form-control">
-            <label for="">Especie:</label>
-            <input type="text" name="esp" value="{{ mascota.especie }}" class="form-control">
-            <label for="">Animal:</label>
-            <input type="text" name="ani" value="{{ mascota.animal }}" class="form-control">
-        </div>--> 
-        <div class="col">
             <label for="">nombre </label>
-            <input type="text" name="nombre" value="{{ groups.id }}" class="form-control">
+            <input type="text" name="nombre" value="{{ data.id }}" class="form-control">
+            
+        <div class="col">
             <label for="">tipo de grupo: </label>
-            <input type="text" name="tipo" value="{{ groups.id }}" class="form-control">
+            <select name="tipo" id="" class="form-control" required>
+                <option value="" autofocus></option><br>
             <label for="">dependencia </label>
-            <input type="text" name="dependencia" value="{{ groups.id }}" class="form-control">
-            <label for="">N</label>
-            <select name="ido" id="" class="form-control" required>
-                <option value="" autofocus></option>
+            <input type="text" name="dependencia" value="{{ data.id }}" class="form-control">
                 {% for groupstype in groupstype_list %}
-                <option name="id_type" value="{{ groupstype.id }}">{{ groupstype.id }}</option> <!--owner.id-->
+                <option name="id_type" value="{{ groupstype.id }}">{{ groupstype.id }}</option> <!--groupstype.id-->
                 {% endfor %}
             </select><br>
             <button type="submit" class="form-control btn btn-success">Guardar </button>
