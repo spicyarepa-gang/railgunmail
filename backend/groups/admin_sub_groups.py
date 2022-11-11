@@ -39,18 +39,17 @@ def update_subgroups(id):
     get_data = Groups.query.all()
     data = SubGroups.query.get(id)
     if request.method == 'POST':
-        data.id_grupo = request.form['grupo']
+        data.id_groups = request.form['groups']
         data.nombre = request.form['nombre']
         db.session.commit()
         return redirect(url_for('subgroups.view_subgroups'))
     return render_template('groups/update_subgroups.html',groups_list=get_data,data=data)
 
 
-'''@subgroups.route('/groups/view/delete/<int:id>')
+@subgroups.route('/groups/view/delete/<int:id>')
 @login_required
 def delete_subgroups(id):
     data = SubGroups.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect(url_for('groups.view_groups'))'''
-
+    return redirect(url_for('subgroups.view_subgroups'))
