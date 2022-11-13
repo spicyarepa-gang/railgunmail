@@ -1,0 +1,27 @@
+{% extends 'base_email.html' %}
+
+{% block title %} Actualiza mascota {% endblock %}
+
+{% block content %} 
+<div class="container">
+    <h1 class="mt-5 mb-4">Editar grupos </h1>
+<form action="{{ url_for('groups.update_groups', id=data.id) }}" method="post">
+    <div class="row">
+        <div class="col">
+            <label for="">nombre </label>
+            <input type="text" name="nombre" value="{{ data.nombre }}" class="form-control">
+            <label for="">tipo de grupo </label>
+            <select name="tipo" id="" class="form-control" required>
+                {% for groupstype in groupstype_list %}
+                <option name="tipo" value="{{ groupstype.id }}">{{ groupstype.nombre }}</option> <!--groupstype.id-->
+                {% endfor %}
+            </select>
+            <label for="">dependencia </label>
+            <input type="text" name="dependencia" value="{{ data.dependencia }}" class="form-control"><br>
+           
+            <button type="submit" class="form-control btn btn-success">Guardar </button>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock %}
