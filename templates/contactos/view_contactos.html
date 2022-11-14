@@ -20,7 +20,7 @@
                 <th>EXTENSION</th>
                 <th>CARGO</th>
                 <th>DEPARTAMENTO</th>
-                <th>OPCIONES</th>
+                <th class="text-end">OPCIONES</th>
             </thead>
             {% for item in data %}
             <tbody>
@@ -31,9 +31,9 @@
                 <td>{{ item.extension }}</td>
                 <td>{{ item.cargo }}</td>
                 <td>{{ item.departamento }}</td>
-                <td>
-                    <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-danger">Borrar</button></a>
-                    <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-success">Editar</button></a>
+                <td class="text-end">
+                    <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
+                    <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
                 </td>
             </tbody>
             {% endfor %}
