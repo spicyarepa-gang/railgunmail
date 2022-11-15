@@ -51,16 +51,16 @@ def add_contactos():
         add_contactos = Contactos(nombre=nombre,direccion=direccion,telefono=telefono,correo=correo,extension=extension,cargo=cargo,departamento=departamento,id_subgroup=id_subgroup)
         db.session.add(add_contactos)
         db.session.commit()
-        return redirect(url_for('email.add_contactos'))
+        return redirect(url_for('email.add_contactos', num_page=1))
     return render_template('contactos/agregar_contactos.html',form=add)
 
 #CONTACTOS VIEW
 from sqlalchemy import desc, asc
-@email.route('/contactos/view', methods=['GET', 'POST'])
+@email.route('/contactos/view/<int:num_page>', methods=['GET', 'POST'])
 @login_required
-def view_contactos():
-    view_contactos = Contactos.query.order_by(desc('id'))
-    return render_template('contactos/view_contactos.html', data=view_contactos)
+def view_contactos(num_page):
+    view_contactos = Contactos.query.order_by(desc('id')).paginate(per_page=5, page=num_page, error_out=False)
+    return render_template('contactos/view_contactos.html', data=view_contactos, num_page=1)
 
 #UPDATE CONTACTOS
 @email.route('/contactos/view/update/<int:id>', methods=['GET', 'POST'])
@@ -76,7 +76,7 @@ def update_contactos(id):
         data.cargo = request.form['cargo']
         data.departamento = request.form['departamento']
         db.session.commit()
-        return redirect(url_for('email.view_contactos'))
+        return redirect(url_for('email.view_contactos',num_page=1))
     return render_template('contactos/update_contactos.html', data=data)
 
 #DELETE CONTACTOS
@@ -86,4 +86,4 @@ def delete_contactos(id):
     data = Contactos.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect(url_for('email.view_contactos'))
+    return redirect(url_for('email.view_contactos',num_page=1))
