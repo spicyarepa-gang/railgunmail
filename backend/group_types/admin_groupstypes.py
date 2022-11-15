@@ -16,7 +16,7 @@ def add_groups_types():
         add_groups_types = GroupsTypes(nombre=nombre)
         db.session.add(add_groups_types)
         db.session.commit()
-        return redirect(url_for('groupstypes.view_groups_types'))  
+        return redirect(url_for('groupstypes.view_groups_types', num_page=1))  
     return render_template('group_types/agregar_groups_types.html',form=add)
     
 
@@ -28,7 +28,7 @@ def update_groupstypes(id):
     if request.method == 'POST':
         data.nombre = request.form['nombre']
         db.session.commit()
-        return redirect(url_for('groupstypes.view_groups_types'))
+        return redirect(url_for('groupstypes.view_groups_types', num_page=1))
     return render_template('group_types/update_groups_types.html', data=data)
 
 #DELETE CONTACTOS
@@ -38,12 +38,12 @@ def delete_groupstypes(id):
     data = GroupsTypes.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect(url_for('groupstypes.view_groups_types'))
+    return redirect(url_for('groupstypes.view_groups_types', num_page=1))
 
 #GROUPSTYPES VIEW
 from sqlalchemy import desc, asc
-@groupstypes.route('/groupsTypes/view', methods=['GET', 'POST'])
+@groupstypes.route('/groupsTypes/view/<int:num_page>', methods=['GET', 'POST'])
 @login_required
-def view_groups_types():
-    view_groups_types = GroupsTypes.query.order_by(desc('id'))
-    return render_template('group_types/view_groups_types.html', data=view_groups_types)
+def view_groups_types(num_page):
+    view_groups_types = GroupsTypes.query.order_by(desc('id')).paginate(per_page=5, page=num_page, error_out=False)
+    return render_template('group_types/view_groups_types.html', data=view_groups_types, num_page=1)
