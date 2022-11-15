@@ -20,16 +20,16 @@ def add_groups():
         add_groups = Groups(id_type=tipo,nombre=nombre,dependencia=dependencia)
         db.session.add(add_groups)
         db.session.commit()
-        return redirect(url_for('groups.add_groups',num_page=1))
+        return redirect(url_for('groups.add_groups'))
     return render_template('groups/agregar_groups.html',form=add)
 
 #GROUPS VIEW
 from sqlalchemy import desc, asc
-@groups.route('/groups/view/<int:num_page>', methods=['GET', 'POST'])
+@groups.route('/groups/view/', methods=['GET', 'POST'])
 @login_required
-def view_groups(num_page):
-    view_groups = db.session.query(Groups, GroupsTypes).select_from(Groups).join(GroupsTypes).all().paginate(per_page=5, page=num_page, error_out=False)
-    return render_template('groups/view_groups.html', data=view_groups,num_page=1)
+def view_groups():
+    view_groups = db.session.query(Groups, GroupsTypes).select_from(Groups).join(GroupsTypes).all()
+    return render_template('groups/view_groups.html', data=view_groups)
 
 #UPDATE GRUPOS
 @groups.route('/groups/view/update/<string:id>', methods=['GET', 'POST'])
@@ -42,7 +42,7 @@ def update_groups(id):
         data.id_type = request.form['tipo']
         data.dependencia = request.form['dependencia']
         db.session.commit()
-        return redirect(url_for('groups.view_groups',num_page=1))
+        return redirect(url_for('groups.view_groups'))
     return render_template('groups/update_groups.html', groupstype_list=get_data,data=data)
 
 
@@ -52,7 +52,7 @@ def delete_groups(id):
     data = Groups.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect(url_for('groups.view_groups',num_page=1))
+    return redirect(url_for('groups.view_groups'))
 
 
 
