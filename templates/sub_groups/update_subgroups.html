@@ -16,10 +16,10 @@
                         <label for="">Grupo </label>
                         <select name="groups" id="" class="form-control" required>
                             {% for groups in groups_list %}
-                            <option name="groups" value="{{ groups.id }}">{{ groups.nombre }}</option> <!--groups.id-->
+                            <option name="groups" value="{{ groups.id }}">{{ groups.nombre }}</option>
                             {% endfor %} 
                         </select><br>
-                        <button type="submit" class="form-control btn btn-success"> Guardar </button>
+                        <button type="submit" class="form-control btn btn-sample"> Guardar </button>
                     </div>
                 </div>
             </form>
