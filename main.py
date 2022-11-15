@@ -15,10 +15,12 @@ from backend.contactos.admin_contactos import email
 from backend.groups.admin_groups import groups
 from backend.group_types.admin_groupstypes import groupstypes
 from backend.sub_groups.admin_sub_groups import subgroups
+from backend.correo_simple.correo_simple import correo_simple
 app.register_blueprint(email)
 app.register_blueprint(groups)
 app.register_blueprint(groupstypes)
 app.register_blueprint(subgroups)
+app.register_blueprint(correo_simple)
 
 from flask_login import LoginManager
 login = LoginManager()
