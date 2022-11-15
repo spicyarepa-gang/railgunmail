@@ -20,7 +20,7 @@
         <tbody>
             <td>{{ groups.nombre }}</td>
             <td>{{ subgroups.nombre }}</td>
-            <td class="text-end">
+            <td class="col-2 text-end">
                 <a href="{{ url_for('subgroups.update_subgroups', id=subgroups.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
                 <a href="{{ url_for('subgroups.delete_subgroups', id=subgroups.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
             </td>

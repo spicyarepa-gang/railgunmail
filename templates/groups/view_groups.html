@@ -17,8 +17,8 @@
   <div class="table-responsive">
     <table id="table" class="table table-stripped w-100">
       <thead>
-          <th class="col-2">NOMBRE</th>
-          <th>TIPO DE GRUPO</th>
+          <th class="col-2">TIPO DE GRUPO</th>
+          <th class="col-4">NOMBRE DEL GRUPO</th>
           <th>DEPENDENCIA</th>
           <th class="text-end">OPCIONES</th>
       </thead>
@@ -26,8 +26,8 @@
       <tbody>
         
           <tr>
-              <td>{{ groups.nombre }}</td>
               <td>{{ groupstypes.nombre }}</td>
+              <td>{{ groups.nombre }}</td>
               <td>{{ groups.dependencia }}</td>
               <td class="text-end">
                   <a href="{{ url_for('groups.update_groups', id=groups.id)}}"><button class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>

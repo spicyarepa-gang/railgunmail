@@ -12,13 +12,13 @@
 <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown table-responsive">
     <table class="table">
         <thead>
-            <th>ID</th>
+            <th class="hidden">ID</th>
             <th>NOMBRE</th>
             <th class="text-end">OPCIONES</th>
         </thead>
         {% for item in data %}
         <tbody>
-            <td>{{ item.id }}</td>
+            <td class="hidden">{{ item.id }}</td>
             <td>{{ item.nombre }}</td>
             <td class="text-end">
                 <a href="{{ url_for('groupstypes.update_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
@@ -28,4 +28,10 @@
         {% endfor %}
     </table>
 </div>
+
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 {% endblock %}
