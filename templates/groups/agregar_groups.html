@@ -3,31 +3,29 @@
 {% block title %} Agregar Grupos {% endblock %}
 
 {% block content %}
+<h2 class="mt-2">AGREGAR UN GRUPO</h2><hr>
 
 <div class="row">
-    <div class="col"></div>
-    <div class="col">
+    <div class="col-sm">
+        <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+            <form action="{{ url_for('groups.add_groups') }}" method="post">
+                {{ form.hidden_tag() }}
+                {{ form.tipo.label(class='form-label') }}
+                {{ form.tipo(class='form-select') }} 
 
-        <form action="{{ url_for('groups.add_groups') }}" method="post">
- 
-            {{ form.hidden_tag() }}
-            {{ form.tipo.label(class='form-label') }}
-            {{ form.tipo(class='form-select') }} 
+                {{ form.hidden_tag() }}
+                {{ form.nombre.label(class='form-label') }}
+                {{ form.nombre(class='form-control') }} 
+                
+                {{ form.hidden_tag() }}
+                {{ form.dependencia.label(class='form-label') }}
+                {{ form.dependencia(class='form-control') }}<br>
 
-            {{ form.hidden_tag() }}
-            {{ form.nombre.label(class='form-label') }}
-            {{ form.nombre(class='form-control') }} 
-            
-            {{ form.hidden_tag() }}
-            {{ form.dependencia.label(class='form-label') }}
-            {{ form.dependencia(class='form-control') }}<br>
-
-            {{ form.submit(class='form-control btn btn-sample') }}
-
-        </form>
-
+                {{ form.submit(class='form-control btn btn-sample') }}
+            </form>
+        </div>
     </div>
-    <div class="col"></div>
+    <div class="col-sm"></div>
+    <div class="col-sm"></div>
 </div>
-
 {% endblock %}

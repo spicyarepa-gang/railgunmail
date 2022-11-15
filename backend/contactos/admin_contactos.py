@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from backend.form import AccesoLogin, InsertarContactos
-from backend.models import Admin, Contactos, Groups
+from backend.models import Admin, Contactos, Groups, SubGroups
 from flask_login import login_required, login_user, logout_user
 from vendors.database import db
 
@@ -35,7 +35,10 @@ def correos():
 @email.route('/contactos/agregar', methods=['GET','POST'])
 @login_required
 def add_contactos():
-    add= InsertarContactos()
+    available_subgroups = SubGroups.query.all()
+    add= InsertarContactos ()
+    add.subgrupo.choices = [(i.id, i.nombre) for i in available_subgroups]
+    
     if add.validate_on_submit(): #validamos datos
         nombre = add.nombre.data
         direccion = add.direccion.data
@@ -44,8 +47,8 @@ def add_contactos():
         extension = add.extension.data
         cargo = add.cargo.data
         departamento = add.departamento.data
-        
-        add_contactos = Contactos(nombre=nombre,direccion=direccion,telefono=telefono,correo=correo,extension=extension,cargo=cargo,departamento=departamento)
+        id_subgroup = add.subgrupo.data
+        add_contactos = Contactos(nombre=nombre,direccion=direccion,telefono=telefono,correo=correo,extension=extension,cargo=cargo,departamento=departamento,id_subgroup=id_subgroup)
         db.session.add(add_contactos)
         db.session.commit()
         return redirect(url_for('email.add_contactos'))
