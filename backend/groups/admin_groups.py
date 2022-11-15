@@ -29,7 +29,7 @@ from sqlalchemy import desc, asc
 @login_required
 def view_groups(num_page):
     view_groups = db.session.query(Groups, GroupsTypes).select_from(Groups).join(GroupsTypes).all().paginate(per_page=5, page=num_page, error_out=False)
-    return render_template('groups/view_groups.html', data=view_groups, num_page=1)
+    return render_template('groups/view_groups.html', data=view_groups,num_page=1)
 
 #UPDATE GRUPOS
 @groups.route('/groups/view/update/<string:id>', methods=['GET', 'POST'])
