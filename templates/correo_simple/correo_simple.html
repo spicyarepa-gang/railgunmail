@@ -7,21 +7,20 @@
 
 <div class="row">
     <div class="col-sm">
-        <h5 class="mt-4">Lista de grupos/contactos</h5>
-        <div class="li-area">
-            <div class="lista-grupos">
-                <ul class="lista">
-                    {% for groups, groupstypes in data %}
-                    <li><a href="">{{ groups.nombre }}</a></li>
-                    {% endfor %}
-                </ul>
+        <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+            <h5 class="">SELECCIONE UN GRUPO</h5><hr>
+            <div class="li-area">
+                <div class="lista-grupos">
+                    <ul class="lista">
+                        {% for groups, groupstypes in data %}
+                        <li><a href="">{{ groups.nombre }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm">
-        <h5 class="mt-4">Escribe tu mensaje:</h5>
-
-    </div>
+    <div class="col-sm"></div>
     <div class="col-sm"></div>
 </div>
 
@@ -44,8 +43,8 @@
     .li-area{
         background-color: #fff;
         padding: 0px;
-        border: solid 1px #000;
-        min-height: 200px;
+        max-height: 400px;
+        overflow-y: scroll;
     }
 </style>
 {% endblock %}
