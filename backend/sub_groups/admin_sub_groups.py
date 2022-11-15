@@ -9,11 +9,11 @@ subgroups = Blueprint('subgroups', __name__)
 
 #SUBGROUPS VIEW
 from sqlalchemy import desc, asc
-@subgroups.route('/subgroups/view/', methods=['GET', 'POST'])
+@subgroups.route('/subgroups/view/<int:num_page>', methods=['GET', 'POST'])
 @login_required
-def view_subgroups():
-    view_sub_groups = db.session.query(SubGroups, Groups).select_from(SubGroups).join(Groups).all()
-    return render_template('sub_groups/view_subgroups.html', data=view_sub_groups)
+def view_subgroups(num_page):
+    view_sub_groups = db.session.query(SubGroups, Groups).select_from(SubGroups).join(Groups).paginate(per_page=5, page=num_page, error_out=False)
+    return render_template('sub_groups/view_subgroups.html', data=view_sub_groups, num_page=1)
 
 #SUBGROUPS VIEW
 from sqlalchemy import desc, asc
@@ -30,7 +30,7 @@ def add_subgroups():
         add_subgroups = SubGroups(id_group=grupo, nombre=nombre)
         db.session.add(add_subgroups)
         db.session.commit()
-        return redirect(url_for('subgroups.add_subgroups'))
+        return redirect(url_for('subgroups.add_subgroups',num_page=1))
     return render_template('sub_groups/agregar_subgrupos.html',form=add)
 
 @subgroups.route('/subgroups/update/<string:id>', methods=['GET','POST'])
@@ -42,7 +42,7 @@ def update_subgroups(id):
         data.id_group = request.form['groups']
         data.nombre = request.form['nombre']
         db.session.commit()
-        return redirect(url_for('subgroups.view_subgroups'))
+        return redirect(url_for('subgroups.view_subgroups',num_page=1))
     return render_template('sub_groups/update_subgroups.html',groups_list=get_data,data=data)
 
 
@@ -52,4 +52,4 @@ def delete_subgroups(id):
     data = SubGroups.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect(url_for('subgroups.view_subgroups'))
+    return redirect(url_for('subgroups.view_subgroups',num_page=1))
