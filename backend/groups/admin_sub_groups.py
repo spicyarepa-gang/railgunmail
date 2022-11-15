@@ -39,7 +39,7 @@ def update_subgroups(id):
     get_data = Groups.query.all()
     data = SubGroups.query.get(id)
     if request.method == 'POST':
-        data.id_groups = request.form['groups']
+        data.id_group = request.form['groups']
         data.nombre = request.form['nombre']
         db.session.commit()
         return redirect(url_for('subgroups.view_subgroups'))

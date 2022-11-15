@@ -3,15 +3,19 @@
 {% block title %}Actualizar Tipo De Grupo{% endblock %}
 
 {% block content %}
+<h2 class="mt-2">ACTUALIZAR TIPO DE GRUPO</h2><hr>
+
 <div class="row">
-    <div class="col"></div>
-    <div class="col">
-        <form action="{{ url_for('groupstypes.update_groupstypes', id=data.id) }}" method="POST">
-            <label for="">Cambio de Nombre</label><br>
-            <input type="text" name="nombre" class='form-control' value="{{ data.nombre }}"><br>
-            <button type="submit" class='form-control btn btn-success'>Enviar</button>
-        </form>
+    <div class="col-sm">
+        <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
+            <form action="{{ url_for('groupstypes.update_groupstypes', id=data.id) }}" method="POST">
+                <label for="">Cambio de Nombre</label><br>
+                <input type="text" name="nombre" class='form-control' value="{{ data.nombre }}"><br>
+                <button type="submit" class='form-control btn btn-sample'>Enviar</button>
+            </form>
+        </div>
     </div>
-    <div class="col"></div>
+    <div class="col-sm"></div>
+    <div class="col-sm"></div>
 </div>
 {% endblock %}

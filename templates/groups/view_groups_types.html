@@ -20,7 +20,7 @@
         <tbody>
             <td class="hidden">{{ item.id }}</td>
             <td>{{ item.nombre }}</td>
-            <td class="text-end">
+            <td class="col-2 text-end">
                 <a href="{{ url_for('groupstypes.update_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
                 <a href="{{ url_for('groupstypes.delete_groupstypes', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
             </td>
