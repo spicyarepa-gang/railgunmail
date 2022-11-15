@@ -17,7 +17,7 @@ def add_groups_types():
         db.session.add(add_groups_types)
         db.session.commit()
         return redirect(url_for('groupstypes.view_groups_types'))  
-    return render_template('groups/agregar_groups_types.html',form=add)
+    return render_template('group_types/agregar_groups_types.html',form=add)
     
 
 #UPDATE TIPOS DE GRUPOS
@@ -29,7 +29,7 @@ def update_groupstypes(id):
         data.nombre = request.form['nombre']
         db.session.commit()
         return redirect(url_for('groupstypes.view_groups_types'))
-    return render_template('groups/update_groups_types.html', data=data)
+    return render_template('group_types/update_groups_types.html', data=data)
 
 #DELETE CONTACTOS
 @groupstypes.route('/groupstypes/view/delete/<int:id>')
@@ -46,4 +46,4 @@ from sqlalchemy import desc, asc
 @login_required
 def view_groups_types():
     view_groups_types = GroupsTypes.query.order_by(desc('id'))
-    return render_template('groups/view_groups_types.html', data=view_groups_types)
+    return render_template('group_types/view_groups_types.html', data=view_groups_types)

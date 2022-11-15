@@ -32,8 +32,8 @@
                 <td>{{ item.cargo }}</td>
                 <td>{{ item.departamento }}</td>
                 <td class="text-end">
-                    <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
                     <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
+                    <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
                 </td>
             </tbody>
             {% endfor %}

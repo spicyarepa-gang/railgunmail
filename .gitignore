@@ -6,3 +6,9 @@ backend/__pycache__/
 *.pyc
 *.pyc
 *.pyc
+vendors/__pycache__/config.cpython-310.pyc
+__pycache__/main.cpython-310.pyc
+backend/__pycache__/form.cpython-310.pyc
+*.pyc
+*.pyc
+*.pyc

@@ -13,7 +13,7 @@ from sqlalchemy import desc, asc
 @login_required
 def view_subgroups():
     view_sub_groups = db.session.query(SubGroups, Groups).select_from(SubGroups).join(Groups).all()
-    return render_template('groups/view_subgroups.html', data=view_sub_groups)
+    return render_template('sub_groups/view_subgroups.html', data=view_sub_groups)
 
 #SUBGROUPS VIEW
 from sqlalchemy import desc, asc
@@ -31,7 +31,7 @@ def add_subgroups():
         db.session.add(add_subgroups)
         db.session.commit()
         return redirect(url_for('subgroups.add_subgroups'))
-    return render_template('groups/agregar_subgrupos.html',form=add)
+    return render_template('sub_groups/agregar_subgrupos.html',form=add)
 
 @subgroups.route('/subgroups/update/<string:id>', methods=['GET','POST'])
 @login_required
@@ -39,14 +39,14 @@ def update_subgroups(id):
     get_data = Groups.query.all()
     data = SubGroups.query.get(id)
     if request.method == 'POST':
-        data.id_groups = request.form['groups']
+        data.id_group = request.form['groups']
         data.nombre = request.form['nombre']
         db.session.commit()
         return redirect(url_for('subgroups.view_subgroups'))
-    return render_template('groups/update_subgroups.html',groups_list=get_data,data=data)
+    return render_template('sub_groups/update_subgroups.html',groups_list=get_data,data=data)
 
 
-@subgroups.route('/groups/view/delete/<int:id>')
+@subgroups.route('/subgroups/view/delete/<int:id>')
 @login_required
 def delete_subgroups(id):
     data = SubGroups.query.get(id)
