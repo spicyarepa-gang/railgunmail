@@ -13,8 +13,8 @@ db.init_app(app)
 
 from backend.contactos.admin_contactos import email
 from backend.groups.admin_groups import groups
-from backend.groups.admin_groupstypes import groupstypes
-from backend.groups.admin_sub_groups import subgroups
+from backend.group_types.admin_groupstypes import groupstypes
+from backend.sub_groups.admin_sub_groups import subgroups
 app.register_blueprint(email)
 app.register_blueprint(groups)
 app.register_blueprint(groupstypes)
