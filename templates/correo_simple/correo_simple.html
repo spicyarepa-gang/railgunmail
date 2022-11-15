@@ -9,16 +9,23 @@
     <div class="col-sm">
         <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
             <h5 class="">SELECCIONE UN GRUPO</h5><hr>
-            <div class="li-area">
-                <div class="lista-grupos">
-                    <ul class="lista">
-                        {% for groups, groupstypes in data %}
-                        <li><a href="">{{ groups.nombre }}</a></li>
-                        {% endfor %}
-                    </ul>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                {% for groups, groupstypes in data %}
+                <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#id--{{ groups.id }}" aria-expanded="false" aria-controls="collapseOne">
+                    {{ groups.nombre }}
+                </button>
+                </h2>
+                <div id="id--{{ groups.id }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        
+                    </div>
                 </div>
-            </div>
-        </div>
+                {% endfor %}  
+                </div>
+            </div>  
+        </div>   
     </div>
     <div class="col-sm"></div>
     <div class="col-sm"></div>
@@ -31,6 +38,7 @@
     }
     .lista li{
         padding: 10px;
+        border-bottom: 1px solid rgb(180, 180, 180);
     }
     .lista li a{
         text-decoration: none; 
@@ -40,10 +48,8 @@
         background-color: rgba(77, 139, 255, 0.418)
     }
 
-    .li-area{
-        background-color: #fff;
-        padding: 0px;
-        max-height: 400px;
+    .accordion{
+        max-height: 300px;
         overflow-y: scroll;
     }
 </style>
