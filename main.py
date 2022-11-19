@@ -8,11 +8,16 @@ from backend.groups.admin_groups import groups
 from backend.group_types.admin_groupstypes import groupstypes
 from backend.sub_groups.admin_sub_groups import subgroups
 from backend.correo_simple.correo_simple import correo_simple
+from flask_wtf.csrf import CSRFProtect
+
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(hours=24)
 app.config.from_object(DevConfig)
 db.init_app(app)
+
+secure = CSRFProtect()
+secure.init_app(app)
 
 app.register_blueprint(email)
 app.register_blueprint(groups)
