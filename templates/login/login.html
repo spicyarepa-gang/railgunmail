@@ -17,6 +17,8 @@
             <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeIn">
                 
                 {{ data.hidden_tag() }}
+                {{ form.csrf_token }}
+
                 <div class="row">
                     <div class="col-sm">
                         {{ data.user.label(class="form-label") }}
