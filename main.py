@@ -35,13 +35,6 @@ def load_admin_or_user(id):
     admin = Admin.query.get(int(id))
     if admin:
         return admin
-  
-
 
 with app.app_context():
     db.create_all()
-
-
-
-
-
