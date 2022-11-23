@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from backend.form import AccesoLogin, InsertarGroup
-from backend.models import Admin, Groups, GroupsTypes
+from backend.models import Admin, Groups, GroupsTypes, Contactos
 from flask_login import login_required, login_user, logout_user
 from vendors.database import db
 
@@ -53,16 +53,3 @@ def delete_groups(id):
     db.session.delete(data)
     db.session.commit()
     return redirect(url_for('groups.view_groups',num_page=1))
-
-
-
-
-
-
-
-
-
-
-
-
-

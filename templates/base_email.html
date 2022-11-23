@@ -39,16 +39,6 @@
                   <li><a class="dropdown-item" href="{{ url_for('email.view_contactos',num_page=1)}}">Lista de contactos</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-envelope"></i> Enviar correos
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{ url_for('correo_simple.view_correo') }}">Correo simple</a></li>
-                  <li><a class="dropdown-item" href="">Correo HTML</a></li>
-                  <li><a class="dropdown-item" href="">Correo WYSIWYG</a></li>
-                </ul>
-              </li>
               <li class="nav-item">
                 <a class="nav-link text-light" href="{{ url_for('email.close')}}"></i><i class="bi bi-power"></i> Cerrar sesión</a>
               </li>

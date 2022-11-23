@@ -103,6 +103,21 @@ td:hover{
   background-color: rgba(77, 139, 255, 0.418)
 }
 
+.lista-contactos{
+  display: flex;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-contactos li{
+  font-weight: bold;
+  padding: 0 5px;
+  margin: 2px 5px 0 0;
+  background-color: #e2e2e2;
+  border: solid 1px rgb(184, 184, 184);
+  border-radius: 100px;
+}
+
 @media only screen and (max-width: 768px) {
   .modal{
     width: 90vw;

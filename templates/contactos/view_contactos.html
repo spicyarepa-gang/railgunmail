@@ -13,28 +13,27 @@
     <div class="table-responsive">
         <table class="table">
             <thead>
-                <th>NOMBRE</th>
                 <th>GRUPO</th>
+                <th>NOMBRE</th>
                 <th>DIRECCION</th>
                 <th>TELEFONO</th>
                 <th>CORREO</th>
                 <th>EXTENSION</th>
                 <th>CARGO</th>
-                <th>DEPARTAMENTO</th>
                 <th class="text-end">OPCIONES</th>
             </thead>
-            {% for item in data.items %}
+            {% for contactos, groups  in data.items %}
             <tbody>
-                <td>{{ item.nombre }}</td>
-                <td>{{ item.direccion }}</td>
-                <td>{{ item.telefono }}</td>
-                <td>{{ item.correo }}</td>
-                <td>{{ item.extension }}</td>
-                <td>{{ item.cargo }}</td>
-                <td>{{ item.departamento }}</td>
+                <td>{{ groups.nombre }}</td>
+                <td>{{ contactos.nombre }}</td>
+                <td>{{ contactos.direccion }}</td>
+                <td>{{ contactos.telefono }}</td>
+                <td>{{ contactos.correo }}</td>
+                <td>{{ contactos.extension }}</td>
+                <td>{{ contactos.cargo }}</td>
                 <td class="text-end">
-                    <a href="{{ url_for('email.update_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
-                    <a href="{{ url_for('email.delete_contactos', id=item.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
+                    <a href="{{ url_for('email.update_contactos', id=contactos.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>
+                    <a href="{{ url_for('email.delete_contactos', id=contactos.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill"></i></button></a>
                 </td>
             </tbody>
             {% endfor %}

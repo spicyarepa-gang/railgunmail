@@ -36,7 +36,7 @@ def correos():
 def add_contactos():
     available_groups = Groups.query.all()
     add= InsertarContactos ()
-    add.subgrupo.choices = [(i.id, i.nombre) for i in available_groups]
+    add.grupo.choices = [(i.id, i.nombre) for i in available_groups]
     
     if add.validate_on_submit(): #validamos datos
         nombre = add.nombre.data
@@ -46,7 +46,7 @@ def add_contactos():
         extension = add.extension.data
         cargo = add.cargo.data
         departamento = add.departamento.data
-        id_group = add.subgrupo.data
+        id_group = add.grupo.data
         add_contactos = Contactos(nombre=nombre,direccion=direccion,telefono=telefono,correo=correo,extension=extension,cargo=cargo,departamento=departamento,id_group=id_group)
         db.session.add(add_contactos)
         db.session.commit()
@@ -58,7 +58,7 @@ from sqlalchemy import desc, asc
 @email.route('/contactos/view/<int:num_page>', methods=['GET', 'POST'])
 @login_required
 def view_contactos(num_page):
-    view_contactos = Contactos.query.order_by(desc('id')).paginate(per_page=5, page=num_page, error_out=False)
+    view_contactos = db.session.query(Contactos, Groups).select_from(Contactos).join(Groups).paginate(per_page=5, page=num_page, error_out=False)
     return render_template('contactos/view_contactos.html', data=view_contactos, num_page=1)
 
 #UPDATE CONTACTOS
