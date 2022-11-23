@@ -16,7 +16,7 @@ class InsertarContactos(FlaskForm):
     extension = StringField('Extensión del contacto:', render_kw={"placeholder": "Extensión del contacto"}, validators=[DataRequired()])
     cargo = StringField('Cargo del contacto:', render_kw={"placeholder": "Cargo del contacto"}, validators=[DataRequired()])
     departamento = StringField('Departamento de procedencia:', render_kw={"placeholder": "Departamento de procedencia"}, validators=[DataRequired()])
-    subgrupo = SelectField('Asignar sub-grupo:', choices=[], validators=[DataRequired()])
+    grupo = SelectField('Asignar grupo:', choices=[], validators=[DataRequired()])
     submit = SubmitField('Añadir contacto')
 
 class InsertarGroupType(FlaskForm):
@@ -29,7 +29,7 @@ class InsertarGroup(FlaskForm):
     dependencia = StringField('Dependencia:', validators=[DataRequired()])
     submit = SubmitField('Ingresar')
 
-class InsertarSubGroups(FlaskForm):
-    grupo = SelectField('Grupo al que pertenece:', choices=[], validators=[DataRequired()])
-    nombre = StringField('Nombre del subgrupo:', validators=[DataRequired()]) 
-    submit = SubmitField('Ingresar')
+# class InsertarSubGroups(FlaskForm):
+#     grupo = SelectField('Grupo al que pertenece:', choices=[], validators=[DataRequired()])
+#     nombre = StringField('Nombre del subgrupo:', validators=[DataRequired()]) 
+#     submit = SubmitField('Ingresar')
