@@ -20,7 +20,7 @@ def add_groups():
         add_groups = Groups(id_type=tipo,nombre=nombre,dependencia=dependencia)
         db.session.add(add_groups)
         db.session.commit()
-        return redirect(url_for('groups.add_groups',num_page=1))
+        return redirect(url_for('groups.view_groups',num_page=1))
     return render_template('groups/agregar_groups.html',form=add)
 
 #GROUPS VIEW

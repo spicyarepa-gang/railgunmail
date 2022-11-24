@@ -19,6 +19,7 @@
                 <th>TELEFONO</th>
                 <th>CORREO</th>
                 <th>EXTENSION</th>
+                <th>DEPARTAMENTO</th>
                 <th>CARGO</th>
                 <th class="text-end">OPCIONES</th>
             </thead>
@@ -30,6 +31,7 @@
                 <td>{{ contactos.telefono }}</td>
                 <td>{{ contactos.correo }}</td>
                 <td>{{ contactos.extension }}</td>
+                <td>{{ contactos.departamento }}</td>
                 <td>{{ contactos.cargo }}</td>
                 <td class="text-end">
                     <a href="{{ url_for('email.update_contactos', id=contactos.id)}}"><button type="submit" class="btn btn-light"><i class="bi bi-pencil-fill"></i></button></a>

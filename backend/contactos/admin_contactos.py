@@ -50,7 +50,7 @@ def add_contactos():
         add_contactos = Contactos(nombre=nombre,direccion=direccion,telefono=telefono,correo=correo,extension=extension,cargo=cargo,departamento=departamento,id_group=id_group)
         db.session.add(add_contactos)
         db.session.commit()
-        return redirect(url_for('email.add_contactos', num_page=1))
+        return redirect(url_for('email.view_contactos', num_page=1))
     return render_template('contactos/agregar_contactos.html',form=add)
 
 #CONTACTOS VIEW
