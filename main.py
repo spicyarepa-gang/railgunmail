@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from vendors.database import db
+from vendors.database import db, mail
 from vendors.config import DevConfig
 from datetime import timedelta
 from backend.contactos.admin_contactos import email
@@ -8,12 +8,19 @@ from backend.groups.admin_groups import groups
 from backend.group_types.admin_groupstypes import groupstypes
 from backend.correo.correo import correo
 from flask_wtf.csrf import CSRFProtect
-
+from flask_ckeditor import CKEditor
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(hours=24)
 app.config.from_object(DevConfig)
 db.init_app(app)
+
+#mail
+mail.init_app(app)
+
+#ckeditor
+ckeditor = CKEditor()
+ckeditor.init_app(app)
 
 secure = CSRFProtect()
 secure.init_app(app)

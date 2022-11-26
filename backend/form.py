@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, PasswordField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
+from flask_ckeditor import CKEditorField
 
 
 class AccesoLogin(FlaskForm):
@@ -28,6 +29,11 @@ class InsertarGroup(FlaskForm):
     tipo = SelectField('Tipo de grupo:', choices=[], validators=[DataRequired()])
     dependencia = StringField('Dependencia:', validators=[DataRequired()])
     submit = SubmitField('Ingresar')
+
+class EnviarCorreo(FlaskForm):
+    title = StringField('Asunto:', validators=[DataRequired()], render_kw={"placeholder": "Escriba el asunto"})
+    body = CKEditorField('Escriba el mensaje', validators=[DataRequired()])
+    submit = SubmitField('Enviar')
 
 # class InsertarSubGroups(FlaskForm):
 #     grupo = SelectField('Grupo al que pertenece:', choices=[], validators=[DataRequired()])
