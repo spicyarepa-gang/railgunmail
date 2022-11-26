@@ -66,6 +66,7 @@ def view_contactos(num_page):
 @login_required
 def update_contactos(id):
     data = Contactos.query.get(id)
+    get_data = Groups.query.all()
     if request.method == 'POST':
         data.nombre = request.form['nombre']
         data.direccion = request.form['direccion']
@@ -76,7 +77,7 @@ def update_contactos(id):
         data.departamento = request.form['departamento']
         db.session.commit()
         return redirect(url_for('email.view_contactos',num_page=1))
-    return render_template('contactos/update_contactos.html', data=data)
+    return render_template('contactos/update_contactos.html', groups_list=get_data, data=data)
 
 #DELETE CONTACTOS
 @email.route('/contactos/view/delete/<int:id>')

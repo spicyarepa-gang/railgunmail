@@ -1,30 +1,30 @@
 {% extends 'base_email.html' %}
 
-{% block title %} Agregar {% endblock %}
+{% block title %} Actualizar contacto {% endblock %}
 
 {% block content %}
-<h2 class="mt-2">NUEVO CONTACTO</h2><hr>
+<h2 class="mt-2">ACTUALIZAR CONTACTO</h2><hr>
 <div class="card p-4 shadow-lg mt-2 animate__animated animate__fadeInDown">
-    <form action="{{ url_for('email.update_contactos', id=data.id) }}" method="post">
-        {{ form.hidden_tag() }}
+    <form action="{{ url_for('email.update_contactos', id=data.id) }}" method="POST">
+        <input type="text" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="row">
             <div class="col-sm">
                 <div class="row">
                     <div class="col-sm">
-                        {{ form.nombre.label(class='form-label') }}
-                        {{ form.nombre(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                        <label for="">Nombre:</label>
+                        <input type="text" name="nombre" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.nombre }}">
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-sm">
-                        {{ form.departamento.label(class='form-label') }}
-                        {{ form.departamento(class='form-control w-100 animate__animated animate__fadeInDown') }} 
+                        <label for="">Departamento:</label>
+                        <input type="text" name="departamento" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.departamento }}">
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-sm">
-                        {{ form.telefono.label(class='form-label') }}
-                        {{ form.telefono(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                        <label for="">Telefono:</label>
+                        <input type="text" name="telefono" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.telefono }}">
                     </div>
                 </div>
             </div>
@@ -32,38 +32,42 @@
                 <div class="row">
                     <div class="row">
                         <div class="col-sm">
-                            {{ form.correo.label(class='form-label') }}
-                            {{ form.correo(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                            <label for="">Correo electrónico:</label>
+                            <input type="text" name="correo" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.correo }}">
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm">
-                            {{ form.extension.label(class='form-label') }}
-                            {{ form.extension(class='form-control w-100 animate__animated animate__fadeInDown ') }}
+                            <label for="">Extension:</label>
+                            <input type="text" name="extension" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.extension }}">
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm">
-                            {{ form.cargo.label(class='form-label') }}
-                            {{ form.cargo(class='form-control w-100 animate__animated animate__fadeInDown') }}
+                            <label for="">Cargo:</label>
+                            <input type="text" name="cargo" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.cargo }}">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row mt-2 mb-2">
                 <div class="col-12">
-                    {{ form.grupo.label(class='form-label') }}
-                    {{ form.grupo(class='form-select animate__animated animate__fadeInDown') }}
+                    <label for="">Grupo:</label>
+                    <select name="id_group" class="form-control w-100 animate__animated animate__fadeInDown">
+                        {% for groups in groups_list %}
+                        <option value="{{ groups.id }}">{{ groups.nombre }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
             <div class="row mt-2 mb-2">
                 <div class="col-12">
-                    {{ form.direccion.label(class='form-label') }}
-                    {{ form.direccion(class='form-control animate__animated animate__fadeInDown') }}
+                    <label for="">Direccion:</label>
+                    <input type="text" name="direccion" class="form-control w-100 animate__animated animate__fadeInDown" value="{{ data.direccion }}">
                 </div>
             </div>
         </div>
-        {{ form.submit(class='form-control btn btn-sample w-100') }}
+        <button type="submit" class="form-control btn btn-sample">Guardar</button>
     </form>
 </div>
 {% endblock %}

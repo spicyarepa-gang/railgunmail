@@ -32,7 +32,7 @@ def view_groups(num_page):
     return render_template('groups/view_groups.html', data=view_groups,num_page=1)
 
 #UPDATE GRUPOS
-@groups.route('/groups/view/update/<string:id>', methods=['GET', 'POST'])
+@groups.route('/groups/view/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_groups(id):
     get_data = GroupsTypes.query.all()
