@@ -14,7 +14,6 @@ from threading import Thread
 from backend.form import EnviarCorreo
 from backend.models import Admin, Groups, GroupsTypes, Contactos
 from flask_login import login_required, login_user, logout_user
-from vendors.database import db, mail
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(hours=24)
@@ -55,34 +54,33 @@ def load_admin_or_user(id):
 with app.app_context():
     db.create_all()
 
+import smtplib, ssl, csv
+from email.message import EmailMessage
 
 @app.route('/groups/view/enviar_a/<int:id>', methods=['GET', 'POST'])
 @login_required
 def enviar_correo(id): 
     add = EnviarCorreo()
-    view_contactos = Contactos.query.filter(Contactos.id_group == id)
-    view_admin = Admin.query.all()
+    view_contactos = db.session.query(Contactos.correo).filter(Contactos.id_group == id)
+    emails = [c for c in view_contactos]
     if add.validate_on_submit(): #validamos datos
-        title = add.title.data
-        body = add.body.data
-        #Error aqui_q
-        a = db.session.query(Admin.nombre)
-        b = db.session.query(Admin.email)
-        correo_admin = [i for i in a]
-        nombre_admin = [i for i in b]
+        subject = add.title.data
+        body_message = add.body.data
+        #conexion al server
+        context = ssl.create_default_context()
+        server = smtplib.SMTP_SSL('smtp.gmail.com', DevConfig.MAIL_PORT, context=context)
+        server.login(DevConfig.MAIL_USERNAME, DevConfig.MAIL_PASSWORD)
+        #envio del correo
+        for row in emails:
+            em = EmailMessage()
+            em['From'] = DevConfig.MAIL_USERNAME
+            em['To'] = row
+            em['Subject'] = subject
+            em.set_content(body_message, subtype="html")
+            server.send_message(em)
 
-        def send_email_thread(title, body):
-            with app.app_context():
-                mail.send(title, body)
-
-        with app.app_context():
-            all_emails = [c for c in view_contactos]
-            for email in all_emails:        
-                message = body
-                subject = title
-                msg = Message(recipients=[email],sender = str(nombre_admin)+" "+"<"+str(correo_admin)+">", body=message, subject=subject)
-                thr = Thread(target=send_email_thread, args=[msg])
-                thr.start()
+        server.close()
+        print('done')
 
         return redirect(url_for('groups.view_groups',num_page=1))
     return render_template('correo/enviar_correo.html', data=view_contactos, form=add)
