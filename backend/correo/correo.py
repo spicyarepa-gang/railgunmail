@@ -18,11 +18,14 @@ def enviar_correo(id):
         title = add.title.data
         body = add.body.data
         #Error aqui_q
-        correo_admin = view_admin.email[0]
-        nombre_admin = view_admin.nombre[0]
+        a = db.session.query(Admin.nombre)
+        b = db.session.query(Admin.email)
+        correo_admin = [i for i in a]
+        nombre_admin = [i for i in b]
+
         def send_email_thread(title, body):
             with correo.app_context():
-                mail.send(title, body, correo_admin, nombre_admin)
+                mail.send(title, body)
 
         with correo.app_context():
             all_emails = [c for c in view_contactos]
