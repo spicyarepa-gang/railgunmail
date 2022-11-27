@@ -80,7 +80,7 @@ def enviar_correo(id):
             for email in all_emails:        
                 message = body
                 subject = title
-                msg = Message(recipients=[email],sender = str(nombre_admin)+" "+"<"+str(correo_admin)+">", body=message,subject=subject)
+                msg = Message(recipients=[email],sender = str(nombre_admin)+" "+"<"+str(correo_admin)+">", body=message, subject=subject)
                 thr = Thread(target=send_email_thread, args=[msg])
                 thr.start()
 
