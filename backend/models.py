@@ -48,3 +48,4 @@ class Contactos(db.Model):
 #     id_group = db.Column(db.Integer, db.ForeignKey('groups.id'))
 #     nombre = db.Column(db.String(300), nullable=False)
 #     rel = db.relationship('Contactos', backref='SubGroups')
+
