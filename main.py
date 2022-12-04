@@ -83,4 +83,4 @@ def enviar_correo(id):
         print('done')
 
         return redirect(url_for('groups.view_groups',num_page=1))
-    return render_template('correo/enviar_correo.html', data=view_contactos, form=add)
+    return render_template('correo/enviar_correo.html', data=view_contactos, form=add)  
